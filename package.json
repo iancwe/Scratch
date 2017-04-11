@@ -1,0 +1,28 @@
+{
+  "name": "project2-scratch",
+  "version": "1.0.0",
+  "description": "supplyhub",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iancwe/project2-scratch.git"
+  },
+  "author": "Ian Chong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iancwe/project2-scratch/issues"
+  },
+  "homepage": "https://github.com/iancwe/project2-scratch#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "express-ejs-layouts": "^2.3.0",
+    "mongoose": "^4.9.4",
+    "nodemon": "^1.11.0"
+  }
+}
