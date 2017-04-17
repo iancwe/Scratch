@@ -6,5 +6,4 @@ router.route('/home')
   res.render('home')
 })
 
-
 module.exports = router

@@ -23,18 +23,6 @@ var userSchema = new mongoose.Schema({
     required: true,
     minlength: [3, 'Name must be at minimum 4 characters'],
     maxlength: [99, 'Name cannot be more than 99 characters']
-  },
-  // conpassword: {
-  //   type: String,
-  //   required: true,
-  //   minlength: [3, 'Name must be at minimum 4 characters'],
-  //   maxlength: [99, 'Name cannot be more than 99 characters'],
-  // },
-  company: {
-    type: String,
-    required: true,
-    minlength: [1, 'Cannot be an empty field'],
-    maxlength: [99, 'Name of company cannot be more than 99 characters']
   }
 })
 

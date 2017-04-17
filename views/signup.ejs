@@ -5,19 +5,16 @@
 <form action="/signup" method="post">
 
   <label for="name">Name</label>
-  <input type="text" name="name" id="userName">
+  <input type="text" name="name" id="userName" value='<%= userData.name %>'>
 
   <label for="email">Email</label>
-  <input type="text" name="email" id="userEmail">
+  <input type="text" name="email" id="userEmail" value='<%= userData.email %>'>
 
   <label for="password">Password</label>
-  <input type="password" name="password" id="userPassword">
+  <input type="password" name="password" id="userPassword"value='<%= userData.password %>'>
 
-  <%# <label for="password">Confirm Password</label>
-  <input type="password" name="conpassword" id="userConPassword">%>
-
-  <label for="company">Company</label>
-  <input type="text" name="company" id="userCompany">
+  <label for="password">Confirm Password</label>
+  <input type="password" name="confirmPassword" id="userConPassword"value='<%= userData.confirmPassword %>'>
 
   <button type="submit">Create Account</button>
 </form>

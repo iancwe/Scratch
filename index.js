@@ -46,8 +46,6 @@ app.use(function (req, res, next) {
   next()
 })
 
-
-
 // setup for landing page for vistors and user
 app.get('/', function (req, res) {
   res.render('landing')
