@@ -1,10 +1,23 @@
-<h1>Welcome to Scratch!</h1>
+<h1>Scratch</h1>
 
-<p>A hub where supplies or stock investors can meet up!</p>
+<p>Connections for the Professionals</p>
 
 <form action="/home" method="post">
+
+  <label for="name">Name</label>
+  <input type="text" name="name" id="userName">
+
   <label for="email">Email</label>
   <input type="text" name="email" id="userEmail">
 
-  <button type="submit">Join Now!</button>
+  <label for="password">Password</label>
+  <input type="password" name="password" id="userPassword">
+
+  <%# <label for="password">Confirm Password</label>
+  <input type="password" name="conpassword" id="userConPassword">%>
+
+  <label for="company">Company</label>
+  <input type="text" name="company" id="userCompany">
+
+  <button type="submit">Create Account</button>
 </form>

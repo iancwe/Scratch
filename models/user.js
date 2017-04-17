@@ -1,9 +1,54 @@
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
+
+// regex for email
+var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
 
 var userSchema = new mongoose.Schema({
-  email: String,
-  password: String,
-  company: String
+  name: {
+    type: String,
+    required: true,
+    minlength: [3, 'Name must be between 3 and 99 characters'],
+    maxlength: [99, 'Name must be between 3 and 99 characters']
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    match: emailRegex
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: [3, 'Name must be at minimum 4 characters'],
+    maxlength: [99, 'Name cannot be more than 99 characters']
+  },
+  // conpassword: {
+  //   type: String,
+  //   required: true,
+  //   minlength: [3, 'Name must be at minimum 4 characters'],
+  //   maxlength: [99, 'Name cannot be more than 99 characters'],
+  // },
+  company: {
+    type: String,
+    required: true,
+    minlength: [1, 'Cannot be an empty field'],
+    maxlength: [99, 'Name of company cannot be more than 99 characters']
+  }
+})
+
+// Creating hashed password for user
+
+userSchema.pre('save', function (next) {
+  var user = this
+
+  // hashing password given by user
+  var hash = bcrypt.hashSync(user.password, 12)
+
+  // swapping entered password with hashed password
+  user.password = hash
+  next()
 })
 
 // setting up models

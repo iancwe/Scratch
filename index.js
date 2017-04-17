@@ -10,12 +10,12 @@ var ejsLayout = require('express-ejs-layouts')
 app.use(ejsLayout)
 app.use(express.static('assets'))
 
-// this is the main page
+// setup for landing page for vistors and user
 app.get('/', function (req, res) {
   res.render('landing')
 })
 
-// this is the main page
+// this is the main page after login
 app.get('/home', function (req, res) {
   res.render('home')
 })
