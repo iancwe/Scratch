@@ -3,7 +3,12 @@ const router = express.Router()
 var User = require('../models/user')
 var passport = require('../config/passport')
 
-router.post('/signup', function (req, res) {
+// routing from landing page to sign up page
+router.route('/signup')
+.get(function (req, res) {
+  res.render('signup')
+})
+.post(function (req, res) {
   User.create({
     name: req.body.name,
     email: req.body.email,
@@ -24,13 +29,12 @@ router.post('/signup', function (req, res) {
   })
 })
 
-// what is this for?
-router.get('/login', function (req, res) {
-  res.render('/home')
+// routing from landing page to home page (log in should be a modal box?)
+router.route('/login')
+.get(function (req, res) {
+  res.render('login')
 })
-
-// FLASH
-router.post('/login', passport.authenticate('local', {
+.post(passport.authenticate('local', {
   successRedirect: '/home',
   failureRedirect: '/login',
   failureFlash: 'Invalid username and/or password',
