@@ -1,12 +1,28 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const session = require('express-session')
+const passport = require('./config/passport')
+const flash = require('connect-flash')
 const app = express()
 require('dotenv').config({ silent: true })
 
-// // mongoose setup
-// var dbURI = process.env.PROD_MONGODB || mongodb://<dbuser>:<dbpassword>@ds161950.mlab.com:61950/scrbk
-// var mongoose = require('mongoose')
-// mongoose.connect(dbURI)
+// mongoose and database set up
+const dbURI = 'mongodb://localhost/scratch'
+const mongoose = require('mongoose')
+mongoose.connect(dbURI, function () {
+  console.log('db is connected')
+})
+mongoose.Promise = global.Promise
+
+// setting up sessions
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 // setting my template engine for express
 app.set('view engine', 'ejs')
@@ -18,6 +34,9 @@ app.use(express.static('assets'))
 
 // setting up bodyParser to use input forms
 app.use(bodyParser.urlencoded({extended: false}))
+
+// setting up flash
+app.use(flash())
 
 // setting up controllers for webpage
 const overCtrl = require('./controllers/overall')
@@ -34,4 +53,6 @@ app.get('/', function (req, res) {
 // app.listen(port, function () {
 //   console.log('express is running the port')
 // })
-app.listen(process.env.PORT)
+app.listen(process.env.PORT, function () {
+  console.log('express is running now')
+})

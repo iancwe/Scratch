@@ -51,6 +51,11 @@ userSchema.pre('save', function (next) {
   next()
 })
 
+userSchema.methods.validPassword = function (password) {
+  // Compare is a bcrypt method that will return a boolean,
+  return bcrypt.compareSync(password, this.password)
+}
+
 // setting up models
 var User = mongoose.model('User', userSchema)
 
