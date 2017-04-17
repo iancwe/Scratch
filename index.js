@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 var port = process.env.PORT || 3000
 
@@ -9,6 +10,15 @@ app.set('view engine', 'ejs')
 var ejsLayout = require('express-ejs-layouts')
 app.use(ejsLayout)
 app.use(express.static('assets'))
+
+// setting up bodyParser to use input forms
+app.use(bodyParser.urlencoded({extended: false}))
+
+// setting up controllers for webpage
+const overCtrl = require('./controllers/overall')
+app.use('/', overCtrl)
+const authCtrl = require('./controllers/auth')
+app.use('/', authCtrl)
 
 // setup for landing page for vistors and user
 app.get('/', function (req, res) {
