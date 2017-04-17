@@ -8,6 +8,10 @@ router.route('/signup')
 })
 
 // routing from landing page to home page (log in should be a modal box?)
+router.route('/login')
+.get(function (req, res) {
+  res.render('login')
+})
 
 router.route('/home')
 .get(function (req, res) {
