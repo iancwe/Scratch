@@ -1,7 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-var port = process.env.PORT || 3000
+require('dotenv').config({ silent: true })
+
+// // mongoose setup
+// var dbURI = process.env.PROD_MONGODB || mongodb://<dbuser>:<dbpassword>@ds161950.mlab.com:61950/scrbk
+// var mongoose = require('mongoose')
+// mongoose.connect(dbURI)
 
 // setting my template engine for express
 app.set('view engine', 'ejs')
@@ -25,12 +30,8 @@ app.get('/', function (req, res) {
   res.render('landing')
 })
 
-// this is the main page after login
-app.get('/home', function (req, res) {
-  res.render('home')
-})
-
 // To make sure we are connected to heroku or localhost
-app.listen(port, function () {
-  console.log('express is running on port ' + port)
-})
+// app.listen(port, function () {
+//   console.log('express is running the port')
+// })
+app.listen(process.env.PORT)
