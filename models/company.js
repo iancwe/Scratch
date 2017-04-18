@@ -14,6 +14,7 @@ var companySchema = new mongoose.Schema({
     maxlength: [4, 'Symbol has to only be 4 characters']
   },
   change: String,
+
   open: {
     type: Number,
     require: true

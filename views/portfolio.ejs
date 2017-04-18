@@ -1,17 +1,28 @@
-<h1>portfolio</h1>
-
-//updating user portfolio and companies
+<h1>Profile</h1>
+<p>updating portfolio or updating email/password</p>
 <form action="/updatePort" method="post">
 
+  <label for="symbol">Symbol</label>
+  <input type="text" name="comSymbol" id="comSymbol" placeholder="e.g. GOOG">
 
-  <label for="company">Company</label>
-  <input type="text" name="email" id="userEmail" value='<%= userData.email %>'>
+  <label for="sharePurc">Shares Purchased</label>
+  <input type="tel" name="sharePurc" id="sharePurc" placeholder="e.g. 25 Shares">
 
-  <label for="password">Company</label>
-  <input type="password" name="password" id="userPassword"value='<%= userData.password %>'>
+  <label for="sharePric">Purchased Price</label>
+  <input type="text" name="sharePric" id="sharePric" placeholder="e.g. 837.17">
+
+<button type="submit">Update Portfolio</button>
+</form>
+
+<form action="/portfolio ?_method=put" method="post">
+  <label for="email">Email</label>
+  <input type="text" name="email" id="userEmail" placeholder="New Email">
+
+  <label for="password">Password</label>
+  <input type="password" name="password" id="userPassword" placeholder="New Password">
 
   <label for="password">Confirm Password</label>
-  <input type="password" name="confirmPassword" id="userConPassword"value='<%= userData.confirmPassword %>'>
+  <input type="password" name="conPassword" id="conPassword" placeholder="Confirm New Password">
 
-  <button type="submit">Create Account</button>
+  <button type="submit">Update Profile</button>
 </form>

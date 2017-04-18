@@ -3,7 +3,8 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const passport = require('./config/passport')
 const flash = require('connect-flash')
-const isLoggedIn = require('./middleware/isLoggedIn')
+// const isLoggedIn = require('./middleware/isLoggedIn')
+const methodOverride = require('method-override')
 const app = express()
 require('dotenv').config({ silent: true })
 
@@ -27,6 +28,9 @@ app.use(passport.session())
 
 // setting my template engine for express
 app.set('view engine', 'ejs')
+
+// set up method override
+app.use(methodOverride('_method'))
 
 // setting the layout structure
 var ejsLayout = require('express-ejs-layouts')
