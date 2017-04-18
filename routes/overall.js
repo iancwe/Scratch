@@ -12,8 +12,13 @@ router.route('/home')
 router.route('/userlist')
 .get(proList.userList)
 
-// routing for users update their current portfolio
+// routing to get the user to portfolio/profile page
 router.route('/portfolio')
-.get(proList.profile)
+.get(proList.profiles)
+.post(proList.portUpdate)
+
+// routing to update user details
+router.route('/portfolio/:id')
+.put(proList.profUpdate)
 
 module.exports = router

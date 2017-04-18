@@ -9,7 +9,6 @@ router.route('/signup')
   res.render('signup', {alert: '', userData: {email: null, password: null, confirmPassword: null, name: null}})
 })
 .post(function (req, res) {
-  // console.log('signup', req.body)
   res.locals.userData = req.body
   if (req.body.password !== req.body.confirmPassword) {
     req.flash('error', 'Password does not Match')

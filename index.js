@@ -3,13 +3,13 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const passport = require('./config/passport')
 const flash = require('connect-flash')
-// const isLoggedIn = require('./middleware/isLoggedIn')
+const isLoggedIn = require('./middleware/isLoggedIn')
 const methodOverride = require('method-override')
 const app = express()
 require('dotenv').config({ silent: true })
 
 // mongoose and database set up
-const dbURI = 'mongodb://localhost/scratch'
+const dbURI = 'mongodb://localhost/scratch' || process.env.PROD_MONGODB
 const mongoose = require('mongoose')
 mongoose.connect(dbURI, function () {
   console.log('db is connected')
@@ -59,7 +59,7 @@ const authCtrl = require('./controllers/auth')
 app.use('/', authCtrl)
 
 // logged in user only
-// app.use(isLoggedIn)
+app.use(isLoggedIn)
 
 // setting up controllers for webpage
 const overCtrl = require('./routes/overall')

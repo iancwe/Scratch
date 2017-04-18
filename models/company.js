@@ -4,33 +4,28 @@ var companySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    minlength: [3, 'Name must be between 3 and 99 characters'],
-    maxlength: [99, 'Name must be between 3 and 99 characters']
+    unique: true
   },
   symbol: {
     type: String,
     required: true,
+    unique: true,
     minlength: [4, 'Symbol has to only be 4 characters'],
     maxlength: [4, 'Symbol has to only be 4 characters']
   },
+  sharePurchased: {
+    type: Number,
+    required: true
+  },
+  purchasedPrice: {
+    type: Number,
+    required: true
+  },
   change: String,
-
-  open: {
-    type: Number,
-    require: true
-  },
-  close: {
-    type: Number,
-    require: true
-  },
-  dhigh: {
-    type: Number,
-    require: true
-  },
-  dlow: {
-    type: Number,
-    require: true
-  }
+  open: Number,
+  close: Number,
+  dhigh: Number,
+  dlow: Number
 })
 
 // setting up models
