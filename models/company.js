@@ -10,7 +10,7 @@ var companySchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    minlength: [4, 'Symbol has to only be 4 characters'],
+    minlength: [2, 'Symbol has to only be 4 characters'],
     maxlength: [4, 'Symbol has to only be 4 characters']
   },
   sharePurchased: {
