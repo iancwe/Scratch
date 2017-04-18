@@ -10,7 +10,7 @@ const app = express()
 require('dotenv').config({ silent: true })
 
 // mongoose and database set up
-const dbURI =  process.env.PROD_MONGODB || 'mongodb://localhost/scratch' 
+const dbURI = process.env.PROD_MONGODB || 'mongodb://localhost/scratch'
 const mongoose = require('mongoose')
 mongoose.connect(dbURI, function () {
   console.log('db is connected')
@@ -43,7 +43,6 @@ app.set('view engine', 'ejs')
 // set up method override
 app.use(methodOverride('_method'))
 
-
 // setting the layout structure
 var ejsLayout = require('express-ejs-layouts')
 app.use(ejsLayout)
@@ -51,8 +50,6 @@ app.use(express.static('assets'))
 
 // setting up bodyParser to use input forms
 app.use(bodyParser.urlencoded({extended: false}))
-
-
 
 // setup for landing page for vistors and user
 app.get('/', function (req, res) {
