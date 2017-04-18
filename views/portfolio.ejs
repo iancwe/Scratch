@@ -1,0 +1,17 @@
+<h1>portfolio</h1>
+
+//updating user portfolio and companies
+<form action="/updatePort" method="post">
+
+
+  <label for="company">Company</label>
+  <input type="text" name="email" id="userEmail" value='<%= userData.email %>'>
+
+  <label for="password">Company</label>
+  <input type="password" name="password" id="userPassword"value='<%= userData.password %>'>
+
+  <label for="password">Confirm Password</label>
+  <input type="password" name="confirmPassword" id="userConPassword"value='<%= userData.confirmPassword %>'>
+
+  <button type="submit">Create Account</button>
+</form>

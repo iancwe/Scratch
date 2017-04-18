@@ -1,0 +1,10 @@
+<h1>Other Users</h1>
+
+<div class="othersrow">
+  <% allUsers.forEach(function(user) { %>
+    <h2><%= user.name %></h2>
+    <h3><%= user.email %></h3>
+    <br>
+    <button>Follow</button>
+  <% }) %>
+</div>

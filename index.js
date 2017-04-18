@@ -55,9 +55,10 @@ const authCtrl = require('./controllers/auth')
 app.use('/', authCtrl)
 
 // logged in user only
-app.use(isLoggedIn)
+// app.use(isLoggedIn)
+
 // setting up controllers for webpage
-const overCtrl = require('./controllers/overall')
+const overCtrl = require('./routes/overall')
 app.use('/', overCtrl)
 
 app.listen(process.env.PORT, function () {
