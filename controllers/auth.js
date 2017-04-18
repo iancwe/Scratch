@@ -22,6 +22,7 @@ router.route('/signup')
     password: req.body.password,
     company: req.body.company
   }, function (err, createdUser) {
+    console.log('created User', createdUser)
     if (err) {
         // FLASH -
       req.flash('error', 'Could not create user account')
