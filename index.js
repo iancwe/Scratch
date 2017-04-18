@@ -10,7 +10,7 @@ const app = express()
 require('dotenv').config({ silent: true })
 
 // mongoose and database set up
-const dbURI = 'mongodb://localhost/scratch' || process.env.PROD_MONGODB
+const dbURI =  process.env.PROD_MONGODB || 'mongodb://localhost/scratch' 
 const mongoose = require('mongoose')
 mongoose.connect(dbURI, function () {
   console.log('db is connected')
