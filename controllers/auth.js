@@ -9,12 +9,12 @@ router.route('/signup')
   res.render('signup', {alert: '', userData: {email: null, password: null, confirmPassword: null, name: null}})
 })
 .post(function (req, res) {
-  res.locals.userData = req.body
-  if (req.body.password !== req.body.confirmPassword) {
-    req.flash('error', 'Password does not Match')
-    res.redirect('/signup')
-    return
-  }
+  // res.locals.userData = req.body
+  // if (req.body.password !== req.body.confirmPassword) {
+  //   req.flash('error', 'Password does not Match')
+  //   res.redirect('/signup')
+  //   return
+  // }
 
   User.create({
     name: req.body.name,
