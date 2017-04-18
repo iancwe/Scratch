@@ -27,21 +27,6 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
-
-// setting my template engine for express
-app.set('view engine', 'ejs')
-
-// set up method override
-app.use(methodOverride('_method'))
-
-// setting the layout structure
-var ejsLayout = require('express-ejs-layouts')
-app.use(ejsLayout)
-app.use(express.static('assets'))
-
-// setting up bodyParser to use input forms
-app.use(bodyParser.urlencoded({extended: false}))
-
 // setting up flash
 app.use(flash())
 
@@ -51,6 +36,23 @@ app.use(function (req, res, next) {
   res.locals.currentUser = req.user
   next()
 })
+
+// setting my template engine for express
+app.set('view engine', 'ejs')
+
+// set up method override
+app.use(methodOverride('_method'))
+
+
+// setting the layout structure
+var ejsLayout = require('express-ejs-layouts')
+app.use(ejsLayout)
+app.use(express.static('assets'))
+
+// setting up bodyParser to use input forms
+app.use(bodyParser.urlencoded({extended: false}))
+
+
 
 // setup for landing page for vistors and user
 app.get('/', function (req, res) {

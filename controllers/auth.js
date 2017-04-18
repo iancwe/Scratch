@@ -6,15 +6,15 @@ var passport = require('../config/passport')
 // routing from landing page to sign up page
 router.route('/signup')
 .get(function (req, res) {
-  res.render('signup', {alert: '', userData: {email: null, password: null, confirmPassword: null, name: null}})
+  res.render('signup')
 })
 .post(function (req, res) {
-  // res.locals.userData = req.body
-  // if (req.body.password !== req.body.confirmPassword) {
-  //   req.flash('error', 'Password does not Match')
-  //   res.redirect('/signup')
-  //   return
-  // }
+  res.locals.userData = req.body
+  if (req.body.password !== req.body.confirmPassword) {
+    req.flash('error', 'Password does not Match')
+    res.redirect('/signup')
+    return
+  }
 
   User.create({
     name: req.body.name,
@@ -27,13 +27,13 @@ router.route('/signup')
         // FLASH -
       req.flash('error', 'Could not create user account')
       res.redirect('/signup')
-    } else {
+    } 
         // FLASH
       passport.authenticate('local', {
         successRedirect: '/home',
         successFlash: 'Account created and logged in'
       })(req, res)
-    }
+
   })
 })
 
