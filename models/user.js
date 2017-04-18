@@ -23,6 +23,10 @@ var userSchema = new mongoose.Schema({
     required: true,
     minlength: [3, 'Name must be at minimum 4 characters'],
     maxlength: [99, 'Name cannot be more than 99 characters']
+  },
+  portfolio: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'company'
   }
 })
 
