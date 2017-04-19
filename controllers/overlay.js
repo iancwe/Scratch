@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const User = require('../models/user')
 const Company = require('../models/company')
+const unirest = require('unirest')
 
 const proList = {
   userList: function (req, res) {
@@ -59,7 +60,11 @@ const proList = {
         req.flash('error', 'Can\'t populate user portfolio')
         req.redirect('/home')
       } else {
+        // api for protfolio stocks
+        // let url = 'http://www.alphavantage.co/query?function=SMA&symbol=MSFT&interval=daily&time_period=2&series_type=close&apikey=C8VN'
+        // unirest.get(url).end(function (output) {
         res.render('home', {companies: company})
+        // })
       }
     })
   },
@@ -71,6 +76,16 @@ const proList = {
       }
       req.flash('success', 'Remove Company from Portfolio')
       res.redirect('/home')
+    })
+  },
+  followUser: function (req, res, next) {
+    User.findByIdAndUpdate(req.user._id, {$push: {follow: req.params.id}}, function (err, updatedData) {
+      if (err) {
+        req.flash('error', 'Unable to add user')
+        res.redirect('/userlist')
+      }
+      req.flash('success', 'Added user to following')
+      res.redirect('/userlist')
     })
   }
 }

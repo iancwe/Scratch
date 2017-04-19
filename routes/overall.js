@@ -23,4 +23,8 @@ router.route('/portfolio/:id')
 router.route('/home/:id')
 .delete(proList.rmvCom)
 
+// routing to follow other users
+router.route('/userlist/:id')
+.put(proList.followUser)
+
 module.exports = router

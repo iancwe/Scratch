@@ -1,5 +1,5 @@
 body{
-  background: url(/img/background1.jpg);
+  background:url(/img/background3.jpg);
   background-size: cover;
 }
 
@@ -13,10 +13,12 @@ body{
 #scratch{
   font-family: 'Francois One', sans-serif;
   font-size: 7em;
+  color: #EEF1EF;
 }
 
 #quote{
   font-size: 1.5em;
+  color: #EEF1EF;
 }
 
 #landCont{
