@@ -2,11 +2,23 @@
 
 <a href="/home">Home</a>
 
-<div class="othersrow">
-  <% allUsers.forEach(function(user) { %>
-    <h2><%= user.name %></h2>
-    <h3><%= user.email %></h3>
-    <br>
-    <button>Follow</button>
+<table class="table table-inverse table-bordered">
+  <% allUsers.forEach(function(user){ %>
+  <tr>
+    <th rowspan="2"><%=user.name%><br><%=user.email%></th>
+    <th>Return:</th>
+    <th>Monthly Trend:</th>
+    <th>Six Months Trend</th>
+    <td rowspan="2">
+    <form action="/userlist/<%= user._id %>?_method=PUT">
+      <button type="submit" name="follow">Follow</button>
+    </form>
+    </td>
+  </tr>
+  <tr>
+    <td>USD 3400</td>
+    <td>5%</td>
+    <td>11%</td>
+  </tr>
   <% }) %>
-</div>
+</table>

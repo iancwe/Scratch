@@ -6,13 +6,14 @@
 <br>
 <a href="/logout">Log Out</a>
 <br>
-<p>User Controll Hub</p>
-<table class="table table-bordered">
+<h2>Portfolio</h2>
+<table class="table table-inverse table-bordered">
   <% companies.forEach(function(company){ %>
   <tr>
     <th rowspan="2"><%=company.name%><br><%=company.symbol%></th>
     <th>Investment:</th>
     <th>Shares Purchased:</th>
+    <th>Purchased Price:</th>
     <th>Returns:</th>
     <td rowspan="2">
       <button type="button" name="seemore">Company Profile</button>
@@ -23,12 +24,13 @@
     </td>
   </tr>
   <tr>
-    <td>USD 2000</td>
+    <td>USD <%=(company.sharePurchased*company.purchasedPrice).toFixed(2)%> </td>
     <td><%=company.sharePurchased%></td>
     <td>USD <%=company.purchasedPrice%></td>
+    <td>USD <%=((855.18*company.sharePurchased)-(company.sharePurchased*company.purchasedPrice)).toFixed(2)%></td>
   </tr>
   <tr>
-    <td colspan="2">Trend:</td>
+    <td colspan="3">Trend:</td>
     <td colspan="3">Performance:</td>
   </tr>
   <% }) %>

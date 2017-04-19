@@ -1,11 +1,11 @@
+*{
+  font-family: 'Raleway', sans-serif;
+}
+
 #modalErrorAlert {
   display: none;
 }
 
 #modalErrorSignAlert {
-  display: none;
-}
-
-#signBtn{
   display: none;
 }

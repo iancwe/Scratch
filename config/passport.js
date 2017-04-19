@@ -7,7 +7,6 @@ const User = require('../models/user')
  * user to an identifier (id)
  */
 passport.serializeUser(function (user, done) {
-  console.log('hello1')
   done(null, user.id)
 })
 
@@ -17,7 +16,6 @@ passport.serializeUser(function (user, done) {
  */
 passport.deserializeUser(function (id, done) {
   User.findById(id, function (err, user) {
-    console.log('hello2')
     done(err, user)
   })
 })
@@ -29,13 +27,9 @@ passport.use('local-login', new LocalStrategy({
 }, function (req, email, password, done) {
   process.nextTick(function () {
     User.findOne({ email: email }, function (err, user) {
-      console.log('something')
       if (err) return done(err)
-      console.log('something1')
       if (!user) return done(null, false)
-      console.log('something2')
       if (!user.validPassword(password)) return done(null, false)
-      console.log('something3')
       return done(null, user)
     })
   })
