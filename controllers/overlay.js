@@ -62,12 +62,22 @@ const proList = {
         res.render('home', {companies: company})
       }
     })
+  },
+  rmvCom: function (req, res, next) {
+    Company.findByIdAndRemove(req.params.id, function (err, removeComp) {
+      if (err) {
+        req.flash('error', 'Unable to remove Company')
+        res.redirect('/home')
+      }
+      req.flash('success', 'Remove Company from Portfolio')
+      res.redirect('/home')
+    })
   }
 }
 
 module.exports = proList
 
-//
+// this is to insert users into company
 // var newcom=new Company({
 //   name:
 //   user: req.user._id

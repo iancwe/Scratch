@@ -10,14 +10,16 @@
 <table class="table table-bordered">
   <% companies.forEach(function(company){ %>
   <tr>
-    <th rowspan="2" class="active" ><%=company.name%><br><%=company.symbol%></th>
+    <th rowspan="2"><%=company.name%><br><%=company.symbol%></th>
     <th>Investment:</th>
     <th>Shares Purchased:</th>
     <th>Returns:</th>
     <td rowspan="2">
       <button type="button" name="seemore">Company Profile</button>
       <br>
-      <button type="button" name="delete">Delete</button>
+      <form action="/home/<%= company._id %>?_method=DELETE" method="post">
+        <button type="submit" name="delete">Delete</button>
+      </form>
     </td>
   </tr>
   <tr>

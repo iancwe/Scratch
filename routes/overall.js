@@ -19,4 +19,8 @@ router.route('/portfolio')
 router.route('/portfolio/:id')
 .put(proList.profUpdate)
 
+// routing to remove company from portfolio
+router.route('/home/:id')
+.delete(proList.rmvCom)
+
 module.exports = router
