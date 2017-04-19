@@ -1,5 +1,7 @@
-<h1>Profile</h1>
+<h1>Profile Page</h1>
+<a href="/home">Home</a>
 <p>updating portfolio or updating email/password</p>
+<h5>Adding Portfolio</h5>
 <form action="/portfolio" method="post">
 
   <label for="comName">Company Name</label>
@@ -17,6 +19,7 @@
   <button type="submit">Update Portfolio</button>
 </form>
 
+<h5>Update Profile Details</h5>
 <form action="/portfolio/<%= currentUser._id %>?_method=put" method="post">
   <label for="email">Email</label>
   <input type="text" name="emailEdit" id="userEmail" placeholder="New Email">
@@ -26,5 +29,3 @@
 
   <button type="submit">Update Profile</button>
 </form>
-
-<a href="/home">Home</a>

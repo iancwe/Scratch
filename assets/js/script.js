@@ -7,10 +7,16 @@ jQuery(function ($) {
       type: 'POST', // or POST
       data: $('#modalLog').serialize(),
       success: function (data) {
-        if (data.message = 'success') {
+        console.log(data)
+        if (data.message === 'success') {
+          $('#logmodal').hide()
+          window.location.replace('/home')
+        } else if (data.message === 'error') {
+          $('#modalErrorAlert').show()
+        }
+
           // close the modal
           // change the location to profile page
-        }
       }
     })
   })

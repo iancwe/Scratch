@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const passport = require('./config/passport')
 const flash = require('connect-flash')
+const path = require('path')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const methodOverride = require('method-override')
 const MongoStore = require('connect-mongo')(session)
@@ -46,7 +47,7 @@ app.use(methodOverride('_method'))
 // setting the layout structure
 var ejsLayout = require('express-ejs-layouts')
 app.use(ejsLayout)
-app.use(express.static('assets'))
+app.use(express.static(path.join(__dirname, 'assets')))
 
 // setting up bodyParser to use input forms
 app.use(bodyParser.urlencoded({extended: false}))

@@ -50,11 +50,11 @@ router.route('/login') /* change back to login if it doesnt work with modal */
 router.post('/login-ajax', function (req, res, next) {
   passport.authenticate('local-login', function (err, user, info) {
     console.log(err, user, info)
-    if (err) { return next(err) }
-    if (!user) { return res.redirect('/login') }
+    if (err) { return res.json({message: 'error'}) }
+    if (!user) { return res.json({message: 'error'}) }
     req.login(user, function (err) {
-      if (err) { return next(err) }
-      return res.send('success')
+      if (err) return res.json({message: 'error'})
+      return res.json({message: 'success'})
     })
   })(req, res, next)
 })
