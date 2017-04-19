@@ -48,7 +48,6 @@ router.route('/login') /* change back to login if it doesnt work with modal */
 }))
 
 router.post('/login-ajax', function (req, res, next) {
-  console.log(req.body)
   passport.authenticate('local-login', function (err, user, info) {
     console.log(err, user, info)
     if (err) { return next(err) }
@@ -57,7 +56,7 @@ router.post('/login-ajax', function (req, res, next) {
       if (err) { return next(err) }
       return res.send('success')
     })
-  })
+  })(req, res, next)
 })
 
 router.get('/logout', function (req, res) {

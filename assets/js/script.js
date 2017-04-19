@@ -1,6 +1,5 @@
 jQuery(function ($) {
   $('#modalLog').on('submit', function (e) {
-    console.log('hi!')
     e.preventDefault()
     $.ajax({
       dataType: 'json',
@@ -8,7 +7,7 @@ jQuery(function ($) {
       type: 'POST', // or POST
       data: $('#modalLog').serialize(),
       success: function (data) {
-        if(data.message = 'success') {
+        if (data.message = 'success') {
           // close the modal
           // change the location to profile page
         }
