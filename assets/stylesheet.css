@@ -1,3 +1,11 @@
 #modalErrorAlert {
   display: none;
 }
+
+#modalErrorSignAlert {
+  display: none;
+}
+
+#signBtn{
+  display: none;
+}
