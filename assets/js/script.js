@@ -14,9 +14,6 @@ jQuery(function ($) {
         } else if (data.message === 'error') {
           $('#modalErrorAlert').show()
         }
-
-          // close the modal
-          // change the location to profile page
       }
     })
   })

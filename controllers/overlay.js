@@ -38,10 +38,37 @@ const proList = {
       symbol: req.body.comSymbol.toUpperCase(),
       sharePurchased: req.body.sharePurc,
       purchasedPrice: req.body.sharePrice
+    }, function (err, company) {
+      if (err) {
+        req.flash('error', 'Company Already Added')
+        return res.redirect('/portfolio')
+      }
+      User.findByIdAndUpdate(req.user._id, {$push: {portfolio: company.id}}, function (err, updatedData) {
+        if (err) {
+          req.flash('error', 'Company Already Added')
+          return res.redirect('/portfolio')
+        }
+        req.flash('success', 'Company Added')
+        return res.redirect('/portfolio')
+      })
     })
-    req.flash('success', 'Company Added')
-    res.render('portfolio')
+  },
+  popHome: function (req, res, next) {
+    Company.find({}, function (err, company) {
+      if (err) {
+        req.flash('error', 'Can\'t populate user portfolio')
+        req.redirect('/home')
+      } else {
+        res.render('home', {companies: company})
+      }
+    })
   }
 }
 
 module.exports = proList
+
+//
+// var newcom=new Company({
+//   name:
+//   user: req.user._id
+// })

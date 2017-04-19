@@ -25,7 +25,11 @@ var companySchema = new mongoose.Schema({
   open: Number,
   close: Number,
   dhigh: Number,
-  dlow: Number
+  dlow: Number,
+  buyers: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'user'
+  }]
 })
 
 // setting up models

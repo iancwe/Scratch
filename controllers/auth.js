@@ -8,7 +8,7 @@ router.route('/signup')
 .get(function (req, res) {
   res.render('signup')
 })
-.post(function (req, res) {
+.post(function (req, res, next) {
   res.locals.userData = req.body
   if (req.body.password !== req.body.confirmPassword) {
     req.flash('error', 'Password does not Match')
@@ -28,18 +28,18 @@ router.route('/signup')
       res.redirect('/signup')
     }
         // FLASH
-    passport.authenticate('local', {
+    passport.authenticate('local-login', {
       successRedirect: '/home',
       successFlash: 'Account created and logged in'
-    })(req, res)
+    })(req, res, next)
   })
 })
 
-// routing from landing page to home page (log in should be a modal box?)
-router.route('/login') /* change back to login if it doesnt work with modal */
-.get(function (req, res) {
-  res.render('login')
-})
+// // routing from landing page to home page (log in should be a modal box?)
+// router.route('/login') /* change back to login if it doesnt work with modal */
+// .get(function (req, res) {
+//   res.render('login')
+// })
 .post(passport.authenticate('local-login', {
   successRedirect: '/home',
   failureRedirect: '/login',
@@ -49,7 +49,6 @@ router.route('/login') /* change back to login if it doesnt work with modal */
 
 router.post('/login-ajax', function (req, res, next) {
   passport.authenticate('local-login', function (err, user, info) {
-    console.log(err, user, info)
     if (err) { return res.json({message: 'error'}) }
     if (!user) { return res.json({message: 'error'}) }
     req.login(user, function (err) {
