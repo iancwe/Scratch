@@ -5,7 +5,7 @@ const passport = require('./config/passport')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const methodOverride = require('method-override')
-// const MongoStore = require('connect-mongo')(session)
+const MongoStore = require('connect-mongo')(session)
 const app = express()
 require('dotenv').config({ silent: true })
 
@@ -22,7 +22,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  // store: new MongoStore({ url: process.env.PROD_MONGODB })
+  store: new MongoStore({ url: dbURI })
 }))
 
 app.use(passport.initialize())

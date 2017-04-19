@@ -36,16 +36,29 @@ router.route('/signup')
 })
 
 // routing from landing page to home page (log in should be a modal box?)
-router.route('/login')
+router.route('/login') /* change back to login if it doesnt work with modal */
 .get(function (req, res) {
   res.render('login')
 })
-.post(passport.authenticate('local', {
+.post(passport.authenticate('local-login', {
   successRedirect: '/home',
   failureRedirect: '/login',
   failureFlash: 'Invalid username and/or password',
   successFlash: 'You have logged in'
 }))
+
+router.post('/login-ajax', function (req, res, next) {
+  console.log(req.body)
+  passport.authenticate('local-login', function (err, user, info) {
+    console.log(err, user, info)
+    if (err) { return next(err) }
+    if (!user) { return res.redirect('/login') }
+    req.login(user, function (err) {
+      if (err) { return next(err) }
+      return res.send('success')
+    })
+  })
+})
 
 router.get('/logout', function (req, res) {
   req.logout()

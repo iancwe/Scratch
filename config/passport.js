@@ -7,6 +7,7 @@ const User = require('../models/user')
  * user to an identifier (id)
  */
 passport.serializeUser(function (user, done) {
+  console.log('hellow')
   done(null, user.id)
 })
 
@@ -15,21 +16,25 @@ passport.serializeUser(function (user, done) {
  * and looking it up in the database
  */
 passport.deserializeUser(function (id, done) {
+  console.log('hellow 2')
   User.findById(id, function (err, user) {
     done(err, user)
   })
 })
 
-passport.use(new LocalStrategy({
+passport.use('local-login', new LocalStrategy({
   usernameField: 'email',
-  passwordField: 'password'
-}, function (email, password, done) {
-  User.findOne({ email: email }, function (err, user) {
-    if (err) return done(err)
-    if (!user) return done(null, false)
-    if (!user.validPassword(password)) return done(null, false)
-    
-    return done(null, user)
+  passwordField: 'password',
+  passReqToCallback: true
+}, function (req, email, password, done) {
+  console.log('something')
+  process.nextTick(function () {
+    User.findOne({ email: email }, function (err, user) {
+      if (err) return done(err)
+      if (!user) return done(null, false)
+      if (!user.validPassword(password)) return done(null, false)
+      return done(null, user)
+    })
   })
 }))
 
