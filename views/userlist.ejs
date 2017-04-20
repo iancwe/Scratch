@@ -1,7 +1,13 @@
-<h1>Other Users</h1>
+<div class="navbar navbar-custom navbar-static-top">
+    <div class="container">
+      <a href="/home" class="navbar-brand navbar-left" id="brand">SCRATCH</a>
+        <a href="/userlist" class="navItem">Other Users</a>
+        <a href="/portfolio" class="navItem">Profile</a>
+        <a href="/logout" class="navItem">Log Out</a>
+    </div>
+</div>
 
-<a href="/home">Home</a>
-
+<h1>Traders</h1>
 <table class="table table-inverse table-bordered">
   <% allUsers.forEach(function(user){ %>
   <tr>

@@ -1,39 +1,54 @@
-<h1>Home</h1>
-
-<a href="/userlist">Other users</a>
-<br>
-<a href="/portfolio">Portfolio</a>
-<br>
-<a href="/logout">Log Out</a>
-<br>
-<h2>Portfolio</h2>
-<table class="table table-inverse table-bordered">
-  <% companies.forEach(function(company,i){ %>
-  <tr>
-    <th rowspan="2"><%=company.name%><br><%=company.symbol%></th>
-    <th>Investment:</th>
-    <th>Shares Purchased:</th>
-    <th>Purchased Price:</th>
-    <th>Daily Average Price:</th>
-    <th>Returns:</th>
-    <td rowspan="2">
-    <br>      
-      <form action="/home/<%= company._id %>?_method=DELETE" method="post">
-        <button type="submit" name="delete">Delete</button>
-      </form>
-    </td>
-  </tr>
-  <tr>
-    <td>USD <%=(company.sharePurchased*company.purchasedPrice).toFixed(2)%> </td>
-    <td><%=company.sharePurchased%></td>
-    <td>USD <%=company.purchasedPrice%></td>
-    <td>USD <%= parseFloat(dAvg[company._id]).toFixed(2)%></td>
-    <% var returnEarning  = ((dAvg[company._id]*company.sharePurchased)-(company.sharePurchased*company.purchasedPrice)).toFixed(2) %>
-    <% if (returnEarning > 0) { %>
-      <td style='background-color: green'>USD <%=returnEarning%></td>
-    <% } else if (returnEarning < 0){ %>
-      <td style='background-color: red'>USD <%=returnEarning%></td>
-      <% } %>
-  </tr>
-  <% }) %>
-</table>
+<div class="navbar navbar-custom navbar-static-top">
+    <div class="container">
+      <a href="/home" class="navbar-brand navbar-left" id="brand">SCRATCH</a>
+        <a href="/userlist" class="navItem">Other Users</a>
+        <a href="/portfolio" class="navItem">Profile</a>
+        <a href="/logout" class="navItem">Log Out</a>
+    </div>
+</div>
+    <h1>Portfolio</h1>
+    <table class="table table-inverse table-bordered table-condensed" id="table">
+        <% companies.forEach(function(company,i){ %>
+            <tr>
+                <th rowspan="2">
+                    <%=company.name%><br>
+                        <%=company.symbol%>
+                </th>
+                <th>Investment:</th>
+                <th>Shares Purchased:</th>
+                <th>Purchased Price:</th>
+                <th>Daily Average Price:</th>
+                <th>Returns:</th>
+                <td rowspan="2">
+                    <br>
+                    <form action="/home/<%= company._id %>?_method=DELETE" method="post">
+                        <button type="submit" name="delete" class="deleteBtn">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>USD
+                    <%=(company.sharePurchased*company.purchasedPrice).toFixed(2)%>
+                </td>
+                <td>
+                    <%=company.sharePurchased%>
+                </td>
+                <td>USD
+                    <%=company.purchasedPrice%>
+                </td>
+                <td>USD
+                    <%= parseFloat(dAvg[company._id]).toFixed(2)%>
+                </td>
+                <% var returnEarning  = ((dAvg[company._id]*company.sharePurchased)-(company.sharePurchased*company.purchasedPrice)).toFixed(2) %>
+                    <% if (returnEarning > 0) { %>
+                        <td style='background-color: green'>USD
+                            <%=returnEarning%>
+                        </td>
+                        <% } else if (returnEarning < 0){ %>
+                            <td style='background-color: red'>USD
+                                <%=returnEarning%>
+                            </td>
+                            <% } %>
+            </tr>
+            <% }) %>
+    </table>

@@ -9,3 +9,81 @@
 #modalErrorSignAlert {
   display: none;
 }
+
+body{
+  background-color: black;
+}
+
+.parent{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100vh;
+  background-image:url(/img/background1.jpg);
+  background-size: cover;
+}
+
+#scratch{
+  width: 100%;
+  text-align: center;
+  font-family: 'Francois One', sans-serif;
+  font-size: 7em;
+  color: #EEE5E9;
+  filter: drop-shadow(0px 20px 10px black);
+  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+}
+
+#quote{
+  width: 50%;
+  font-size: 1.5em;
+  color: #000000;
+  text-align: center;
+  background-color: rgba(255,255,255,0.6);
+  filter: drop-shadow(0px 30px 10px black);
+}
+
+#landCont{
+  width: 100%;
+  text-align: center;
+  align-self: center;
+}
+
+.blur{
+  filter: blur(10px)
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(4px);
+    -ms-filter: blur(4px);
+    -o-filter: blur(4px);;
+}
+
+th{
+  background-color: #7C7C7C;
+}
+
+#brand{
+  color: white;
+}
+#brand:hover{
+  color:#D64933;
+}
+
+.navbar-custom {
+    background-color:#7C7C7C;
+    color:#ffffff;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.navItem{
+  color: white;
+  padding-left: 1em;
+}
+
+.navItem:hover{
+  color:#D64933;
+}
+
+h1{
+  color: white;
+}

@@ -1,77 +1,73 @@
-<head>
-  <link rel="stylesheet" href="/css/landing.css">
-</head>
-<div class="parent">
+<div class="parent" style='background-image:url(/img/background<%=parseInt(Math.random() * 3)%>.jpg)'>
+    <h1 id="scratch">-Scratch-</h1>
 
-<h1 id="scratch">-Scratch-</h1>
+    <p id="quote">It's better to hang out with people better than you. Pick out associates whose behavior is better than yours and you'll drift in that direction.<strong>-Warren Buffett</strong></p>
+    <div class="container" id="landCont">
 
-<p id="quote">It's better to hang out with people better than you. Pick out associates whose behavior is better than yours and you'll drift in that direction.<strong>-Warren Buffett</strong></p>
-<%# <a href="/signup">Sign Up</a>%>
-<%# <a href="/login">Log In</a>%>
-<div class="container" id="landCont">
-
-  <%# divs for signing up modal %>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sigmodal" id="signBtn">Sign Up</button>
-  <div class="modal fade" id="sigmodal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>Sign Up</h3>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <form data-async action="/landing" method="post" id="modalSign">
-          <div class="modal-body">
-            <div id="modalErrorSignAlert"><h5>Sign Up Failed</h5></div>
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" name="name" id="userName">
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" name="email" id="userEmail">
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" name="password" id="userPassword">
-            </div>
-            <div class="form-group">
-              <label for="password">Confirm Password</label>
-              <input type="password" name="confirmPassword" id="userConPassword">
-            </div>
-          </div>
-          <div class="modal-footer"></div>
-          <button class="btn btn-primary btn-block" type="submit" id="sigBtn">Create Account</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <%# divs for logging in modal%>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#logmodal">Log In</button>
-    <div class="modal fade" id="logmodal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Log In</h3>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <%# divs for signing up modal %>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sigmodal" id="signBtn">Sign Up</button>
+            <div class="modal fade" id="sigmodal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Sign Up</h3>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <form data-async action="/landing" method="post" id="modalSign">
+                            <div class="modal-body">
+                                <div id="modalErrorSignAlert">
+                                    <h5>Sign Up Failed</h5></div>
+                                <div class="form-group">
+                                    <label for="logName">Name</label>
+                                    <input type="text" name="name" id="logName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userEmail">Email</label>
+                                    <input type="text" name="email" id="userEmail">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userPassword">Password</label>
+                                    <input type="password" name="password" id="userPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userConPassword">Confirm Password</label>
+                                    <input type="password" name="confirmPassword" id="userConPassword">
+                                </div>
+                            </div>
+                            <div class="modal-footer"></div>
+                            <button class="btn btn-primary btn-block" type="submit" id="sigBtn">Create Account</button>
+                        </form>
+                    </div>
                 </div>
-                <form data-async action="/landing" method="post" id="modalLog">
-                  <div class="modal-body">
-                    <div id="modalErrorAlert"><h5>Log In Failed</h5></div>
-                          <div class="form-group">
-                              <label for="email">Email</label>
-                              <input type="text" name="email" id="userEmail">
-                          </div>
-                          <div class="form-group">
-                              <label for="password">Password</label>
-                              <input type="password" name="password" id="userPassword">
-                          </div>
-                  </div>
-                  <div class="modal-footer"></div>
-                  <button class="btn btn-primary btn-block" type="submit" id="logBtn">Log in</button>
-                </form>
             </div>
-        </div>
+            <%# divs for logging in modal%>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#logmodal">Log In</button>
+                <div class="modal fade" id="logmodal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Log In</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <form data-async action="/landing" method="post" id="modalLog">
+                                <div class="modal-body">
+                                    <div id="modalErrorAlert">
+                                        <h5>Log In Failed</h5></div>
+                                    <div class="form-group">
+                                        <label for="userLogEmail">Email</label>
+                                        <input type="text" name="email" id="userLogEmail">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="userLogPassword">Password</label>
+                                        <input type="password" name="password" id="userLogPassword">
+                                    </div>
+                                </div>
+                                <div class="modal-footer"></div>
+                                <button class="btn btn-primary btn-block" type="submit" id="logBtn">Log in</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
     </div>
-</div>
 </div>
 <script src="/js/landing.js" charset="utf-8"></script>
