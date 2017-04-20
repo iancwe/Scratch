@@ -172,6 +172,7 @@ By doing populate on my referenced collection I was able to just display the cur
 - Bcrypt
 - passport
 - Express
+
 ![Witchcraft](https://media.giphy.com/media/3o84U6421OOWegpQhq/giphy.gif)
 
 ## Bugs :bug:
