@@ -26,7 +26,7 @@ var userSchema = new mongoose.Schema({
   },
   portfolio: [{
     type: mongoose.Schema.ObjectId,
-    ref: 'company'
+    ref: 'Company'
   }],
   follow: [{
     type: mongoose.Schema.ObjectId,

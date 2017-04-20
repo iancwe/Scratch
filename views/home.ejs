@@ -17,8 +17,7 @@
     <th>Daily Average Price:</th>
     <th>Returns:</th>
     <td rowspan="2">
-      <button type="button" name="seemore">Company Profile</button>
-      <br>
+    <br>      
       <form action="/home/<%= company._id %>?_method=DELETE" method="post">
         <button type="submit" name="delete">Delete</button>
       </form>
@@ -29,7 +28,12 @@
     <td><%=company.sharePurchased%></td>
     <td>USD <%=company.purchasedPrice%></td>
     <td>USD <%= parseFloat(dAvg[company._id]).toFixed(2)%></td>
-    <td>USD <%=((dAvg[company._id]*company.sharePurchased)-(company.sharePurchased*company.purchasedPrice)).toFixed(2)%></td>
+    <% var returnEarning  = ((dAvg[company._id]*company.sharePurchased)-(company.sharePurchased*company.purchasedPrice)).toFixed(2) %>
+    <% if (returnEarning > 0) { %>
+      <td style='background-color: green'>USD <%=returnEarning%></td>
+    <% } else if (returnEarning < 0){ %>
+      <td style='background-color: red'>USD <%=returnEarning%></td>
+      <% } %>
   </tr>
   <% }) %>
 </table>

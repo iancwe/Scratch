@@ -9,7 +9,6 @@ router.route('/sign-ajax') // change back to /signup if modal doesnt work
 //   res.render('signup')
 // })
 .post(function (req, res, next) {
-  console.log('sup')
   res.locals.userData = req.body
   if (req.body.password !== req.body.confirmPassword) {
     req.flash('error', 'Password does not Match')
