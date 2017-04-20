@@ -8,12 +8,13 @@
 <br>
 <h2>Portfolio</h2>
 <table class="table table-inverse table-bordered">
-  <% companies.forEach(function(company){ %>
+  <% companies.forEach(function(company,i){ %>
   <tr>
     <th rowspan="2"><%=company.name%><br><%=company.symbol%></th>
     <th>Investment:</th>
     <th>Shares Purchased:</th>
     <th>Purchased Price:</th>
+    <th>Daily Average Price:</th>
     <th>Returns:</th>
     <td rowspan="2">
       <button type="button" name="seemore">Company Profile</button>
@@ -27,7 +28,8 @@
     <td>USD <%=(company.sharePurchased*company.purchasedPrice).toFixed(2)%> </td>
     <td><%=company.sharePurchased%></td>
     <td>USD <%=company.purchasedPrice%></td>
-    <td>USD <%=((dAvg*company.sharePurchased)-(company.sharePurchased*company.purchasedPrice)).toFixed(2)%></td>
+    <td>USD <%= parseFloat(dAvg[company._id]).toFixed(2)%></td>
+    <td>USD <%=((dAvg[company._id]*company.sharePurchased)-(company.sharePurchased*company.purchasedPrice)).toFixed(2)%></td>
   </tr>
   <% }) %>
 </table>
