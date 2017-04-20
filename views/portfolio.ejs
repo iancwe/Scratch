@@ -1,6 +1,6 @@
 <div class="navbar navbar-custom navbar-static-top">
     <div class="container">
-      <a href="/home" class="navbar-brand navbar-left" id="brand">SCRATCH</a>
+        <a href="/home" class="navbar-brand navbar-left" id="brand">SCRATCH</a>
         <a href="/userlist" class="navItem">Other Users</a>
         <a href="/portfolio" class="navItem">Profile</a>
         <a href="/logout" class="navItem">Log Out</a>
@@ -8,31 +8,36 @@
 </div>
 <h1>Profile Page</h1>
 <p>updating portfolio or updating email/password</p>
-<h5>Adding Portfolio</h5>
-<form action="/portfolio" method="post">
-
-  <label for="comName">Company Name</label>
-  <input type="text" name="comName" id="comName" placeholder="e.g. GOOGLE">
-
-  <label for="symbol">Symbol</label>
-  <input type="text" name="comSymbol" id="comSymbol" placeholder="e.g. GOOG">
-
-  <label for="sharePurc">Shares Purchased</label>
-  <input type="tel" name="sharePurc" id="sharePurc" placeholder="e.g. 25 Shares">
-
-  <label for="sharePrice">Purchased Price</label>
-  <input type="text" name="sharePrice" id="sharePrice" placeholder="e.g. 837.17">
-
-  <button type="submit">Update Portfolio</button>
+<h3>Adding Portfolio</h3>
+<form action="/portfolio" method="post" class="addComForm">
+    <div class="form-group">
+        <label for="comName" class="protLabel">Company Name</label>
+        <input type="text" name="comName" id="comName" placeholder="e.g. GOOGLE">
+    </div>
+    <div class="form-group">
+        <label for="comSymbol" class="protLabel">Symbol</label>
+        <input type="text" name="comSymbol" id="comSymbol" placeholder="e.g. GOOG">
+    </div>
+    <div class="form-group">
+        <label for="sharePurc" class="protLabel">Shares Purchased</label>
+        <input type="tel" name="sharePurc" id="sharePurc" placeholder="e.g. 25 Shares">
+    </div>
+    <div class="form-group">
+        <label for="sharePrice" class="protLabel">Purchased Price</label>
+        <input type="text" name="sharePrice" id="sharePrice" placeholder="e.g. 837.17">
+    </div>
+    <button type="submit" id="portBtn">Update Portfolio</button>
 </form>
 
-<h5>Update Profile Details</h5>
+<h3>Update Profile Details</h3>
 <form action="/portfolio/<%= currentUser._id %>?_method=put" method="post">
-  <label for="email">Email</label>
-  <input type="text" name="emailEdit" id="userEmail" placeholder="New Email">
-
-  <label for="password">Password</label>
-  <input type="password" name="passwordEdit" id="userPassword" placeholder="New Password">
-
-  <button type="submit">Update Profile</button>
+    <div class="form-group">
+        <label for="userCEmail" class="protLabel">Email</label>
+        <input type="text" name="emailEdit" id="userCEmail" placeholder="New Email">
+    </div>
+    <div class="form-group">
+        <label for="userCPassword" class="protLabel">Password</label>
+        <input type="password" name="passwordEdit" id="userCPassword" placeholder="New Password">
+    </div>
+    <button type="submit">Update Profile</button>
 </form>

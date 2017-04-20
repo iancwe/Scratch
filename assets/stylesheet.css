@@ -84,6 +84,14 @@ th{
   color:#D64933;
 }
 
-h1{
+h1,h3,p,.protLabel{
   color: white;
+}
+
+.addComForm{
+  text-align: left;
+}
+
+#portBtn{
+  margin-bottom: 4em;
 }
