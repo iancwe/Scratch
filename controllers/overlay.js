@@ -4,6 +4,8 @@ const User = require('../models/user')
 const Company = require('../models/company')
 const unirest = require('unirest')
 
+// create a functionto number crunch the data
+
 const proList = {
   userList: function (req, res) {
     User.find({}, function (err, users) {
@@ -61,10 +63,13 @@ const proList = {
         req.redirect('/home')
       } else {
         // api for protfolio stocks
-        // let url = 'http://www.alphavantage.co/query?function=SMA&symbol=MSFT&interval=daily&time_period=2&series_type=close&apikey=C8VN'
-        // unirest.get(url).end(function (output) {
-        res.render('home', {data: output['Technical Analysis: SMA']})
-        // })
+        let url = 'http://www.alphavantage.co/query?function=SMA&symbol=GOOG&interval=daily&time_period=2&series_type=close&apikey=C8VN'
+        unirest.get(url).end(function (output) {
+          let data = output.body['Technical Analysis: SMA']
+          let avg = data[Object.keys(data)[0]]
+          console.log(avg.SMA)
+          res.render('home', {companies: company, dAvg: avg.SMA})
+        })
       }
     })
   },

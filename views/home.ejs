@@ -27,7 +27,7 @@
     <td>USD <%=(company.sharePurchased*company.purchasedPrice).toFixed(2)%> </td>
     <td><%=company.sharePurchased%></td>
     <td>USD <%=company.purchasedPrice%></td>
-    <td>USD <%=((855.18*company.sharePurchased)-(company.sharePurchased*company.purchasedPrice)).toFixed(2)%></td>
+    <td>USD <%=((dAvg*company.sharePurchased)-(company.sharePurchased*company.purchasedPrice)).toFixed(2)%></td>
   </tr>
   <% }) %>
 </table>
