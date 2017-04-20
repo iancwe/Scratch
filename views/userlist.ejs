@@ -14,7 +14,7 @@
     <th rowspan="2"><%=user.name%><br><%=user.email%></th>
     <th>Return:</th>
     <th>Monthly Trend:</th>
-    <th>Six Months Trend</th>
+    <th>Half Year Trend</th>
     <td rowspan="2">
     <form action="/userlist/<%= user._id %>?_method=PUT" method="post">
       <button type="submit" name="follow">Follow</button>
@@ -22,9 +22,10 @@
     </td>
   </tr>
   <tr>
-    <td>USD 3400</td>
-    <td>5%</td>
-    <td>11%</td>
+  /*Simulation of the trend since I do not have any figures yet*/
+    <td>USD <%-(Math.random()*1500).toFixed(2)%></td>
+    <td><%-parseInt(Math.random()*15)%>%</td>
+    <td><%-parseInt(Math.random()*25)%>%</td>
   </tr>
   <% }) %>
 </table>

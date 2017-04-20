@@ -13,6 +13,11 @@ const proList = {
         req.flash('Cant find users')
         res.redirect('/home')
       } else {
+        // User.findById(req.user._id)
+        // .populate({
+        //   path: 'follow'
+        // })
+        // // .exec(function (err, user) {}
         res.render('userlist', {allUsers: users})
       }
     })
@@ -62,7 +67,6 @@ const proList = {
       path: 'portfolio'
     })
     .exec(function (err, user) {
-      // res.send(user)
       let company = user.portfolio
       if (err) {
         req.flash('error', 'Can\'t populate user portfolio')
@@ -113,9 +117,3 @@ const proList = {
 }
 
 module.exports = proList
-
-// this is to insert users into company
-// var newcom=new Company({
-//   name:
-//   user: req.user._id
-// })
