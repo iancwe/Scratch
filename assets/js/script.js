@@ -30,6 +30,7 @@ jQuery(function ($) {
       data: $('#modalSign').serialize(),
       success: function (data) {
         if (data.message === 'success') {
+          console.log('hi')
           $('#modalSign').hide()
           window.location.replace('/home')
         } else if (data.message === 'error') {

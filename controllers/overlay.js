@@ -63,7 +63,7 @@ const proList = {
         // api for protfolio stocks
         // let url = 'http://www.alphavantage.co/query?function=SMA&symbol=MSFT&interval=daily&time_period=2&series_type=close&apikey=C8VN'
         // unirest.get(url).end(function (output) {
-        res.render('home', {companies: company})
+        res.render('home', {data: output['Technical Analysis: SMA']})
         // })
       }
     })

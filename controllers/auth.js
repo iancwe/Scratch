@@ -4,11 +4,12 @@ var User = require('../models/user')
 var passport = require('../config/passport')
 
 // routing from landing page to sign up page
-router.route('/signup') // change back to /signup if modal doesnt work
-.get(function (req, res) {
-  res.render('signup')
-})
+router.route('/sign-ajax') // change back to /signup if modal doesnt work
+// .get(function (req, res) {
+//   res.render('signup')
+// })
 .post(function (req, res, next) {
+  console.log('sup')
   res.locals.userData = req.body
   if (req.body.password !== req.body.confirmPassword) {
     req.flash('error', 'Password does not Match')
@@ -27,19 +28,28 @@ router.route('/signup') // change back to /signup if modal doesnt work
       res.redirect('/signup')
     }
 
-    passport.authenticate('local-login', {
-      successRedirect: '/home',
-      successFlash: 'Account created and logged in'
+    passport.authenticate('local-login', function (err, user, info) {
+      if (err) { return res.json({message: 'error'}) }
+      if (!user) { return res.json({message: 'error'}) }
+      req.login(user, function (err) {
+        if (err) return res.json({message: 'error'})
+        return res.json({message: 'success'})
+      })
     })(req, res, next)
+
+    // passport.authenticate('local-login', {
+    //   successRedirect: '/home',
+    //   successFlash: 'Account created and logged in'
+    // })(req, res, next)
   })
 })
 
-.post(passport.authenticate('local-login', {
-  successRedirect: '/home',
-  failureRedirect: '/login',
-  failureFlash: 'Invalid username and/or password',
-  successFlash: 'You have logged in'
-}))
+// .post(passport.authenticate('local-login', {
+//   successRedirect: '/home',
+//   failureRedirect: '/login',
+//   failureFlash: 'Invalid username and/or password',
+//   successFlash: 'You have logged in'
+// }))
 
 // .get(function (req, res) {
 //   res.render('home')
