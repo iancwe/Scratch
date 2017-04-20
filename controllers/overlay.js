@@ -62,21 +62,23 @@ const proList = {
         req.flash('error', 'Can\'t populate user portfolio')
         req.redirect('/home')
       } else {
-        let comAvg = {}
-        company.forEach(function (nth, i) {
-          console.log('I am here', nth)
-          let comSym = company[i].symbol
-          let url = 'http://www.alphavantage.co/query?function=SMA&symbol=' + comSym + '&interval=daily&time_period=2&series_type=close&apikey=C8VN'
-          unirest.get(url).end(function (output) {
-            let data = output.body['Technical Analysis: SMA']
-            let avg = data[Object.keys(data)[0]]
-            console.log('igiojog', avg.SMA)
-            comAvg[company[i]._id] = (avg.SMA)
-            if (Object.keys(comAvg).length === company.length) {
-              res.render('home', {companies: company, dAvg: comAvg})
-            }
-          })
-        })
+
+        res.render('home', {companies: company, dAvg: {} })
+        // let comAvg = {}
+        // company.forEach(function (nth, i) {
+        //   console.log('I am here', nth)
+        //   let comSym = company[i].symbol
+        //   let url = 'http://www.alphavantage.co/query?function=SMA&symbol=' + comSym + '&interval=daily&time_period=2&series_type=close&apikey=C8VN'
+        //   unirest.get(url).end(function (output) {
+        //     let data = output.body['Technical Analysis: SMA']
+        //     let avg = data[Object.keys(data)[0]]
+        //     console.log('igiojog', avg.SMA)
+        //     comAvg[company[i]._id] = (avg.SMA)
+        //     if (Object.keys(comAvg).length === company.length) {
+        //       res.render('home', {companies: company, dAvg: comAvg})
+        //     }
+        //   })
+        // })
       }
     })
   },
