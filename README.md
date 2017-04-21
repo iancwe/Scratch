@@ -210,5 +210,5 @@ By doing populate on my referenced collection I was able to just display the cur
 - [Robin](https://github.com/cwxr)
 - [Darrell](https://github.com/darrelltzj)
 
-Without the Handsome I my project might be still broken.
+Without the Handsome my project might be still broken.
 ![The Handsome](http://i.imgur.com/ZtcGF7B.gif)
