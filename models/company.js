@@ -3,13 +3,11 @@ const mongoose = require('mongoose')
 var companySchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   symbol: {
     type: String,
     required: true,
-    unique: true,
     minlength: [2, 'Symbol has to only be 4 characters'],
     maxlength: [4, 'Symbol has to only be 4 characters']
   },

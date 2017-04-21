@@ -89,7 +89,6 @@ I assumed when creating a modal dialog box to house my sign up and log in form. 
     })
   })
 })`
-
 As seen from the code above, once the user clicks on the log in button. It prevents the default action of the `.post` route but instead takes the data from the form and packages it into an `json` first then post it which is taken in by the passport in the authentication controller.
 
 `router.post('/login-ajax', function (req, res, next) {
