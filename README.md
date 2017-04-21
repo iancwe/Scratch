@@ -70,7 +70,8 @@ The first column wireframes are for the home page once the users are signed up o
 
 I assumed when creating a modal dialog box to house my sign up and log in form. It would just be an synchronous affair. However after many hours of trying to figure out if I broke my authentication and passport function. I realized it was an async function only after trawling through StackOverflow. Using jQuery to pass the data that was extracted out from the form using`ajax`
 
-`jQuery(function ($) {
+```
+jQuery(function ($) {
   $('#modalLog').on('submit', function (e) {
     e.preventDefault()
     $.ajax({
@@ -88,10 +89,13 @@ I assumed when creating a modal dialog box to house my sign up and log in form. 
       }
     })
   })
-})`
+})
+```
+
 As seen from the code above, once the user clicks on the log in button. It prevents the default action of the `.post` route but instead takes the data from the form and packages it into an `json` first then post it which is taken in by the passport in the authentication controller.
 
-`router.post('/login-ajax', function (req, res, next) {
+```
+router.post('/login-ajax', function (req, res, next) {
   passport.authenticate('local-login', function (err, user, info) {
     if (err) { return res.json({message: 'error'}) }
     if (!user) { return res.json({message: 'error'}) }
@@ -100,11 +104,13 @@ As seen from the code above, once the user clicks on the log in button. It preve
       return res.json({message: 'success'})
     })
   })(req, res, next)
-})`
+})
+```
 
 It takes in the `json` data and runs the passport function as well.
 
-`passport.use('local-login', new LocalStrategy({
+```
+passport.use('local-login', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
@@ -117,13 +123,15 @@ It takes in the `json` data and runs the passport function as well.
       return done(null, user)
     })
   })
-}))`
+}))
+```
 
 So once the `passport.use` function runs through the data checking if it indeed in the database and it is an registered user. it returns a `json` back with either the message `success` or `error` The respond has to be send back in JSON because the request was also sent as a JSON. It is sent back to the script in `script.js` with it's corresponding message the script would either replace the current window with the home page or `.show` and error message that was hidden in the log in/sign up modal box.
 
 2. API for finance or just stock in general were actually pretty difficult to scour for. As most of them are behind a pay wall or have deprecated databases. Yahoo finance API which was a go to for most developers current stopped their YAHOO webservice API services. Luckily reading through some developer forums I managed to find a service provider called 'Alpha Vantage' for APIs. This API was was to be used every time the user get routed to the homepage where their portfolio is retrieved and updated with the current day average stock prices for the company he chose.
 
-`  let comAvg = {}
+```  
+let comAvg = {}
   company.forEach(function (nth, i) {
     let comSym = company[i].symbol
     let url = 'http://www.alphavantage.co/query?function=SMA&symbol=' + comSym + '&interval=daily&time_period=2&series_type=close&apikey=C8VN'
@@ -132,7 +140,8 @@ So once the `passport.use` function runs through the data checking if it indeed 
       let avg = data[Object.keys(data)[0]]
       comAvg[company[i]._id] = (avg.SMA)
       if (Object.keys(comAvg).length === company.length) {
-        res.render('home', {companies: company, dAvg: comAvg})`
+        res.render('home', {companies: company, dAvg: comAvg})
+        ```
 
 Using the `unirest` module it made handling an `ajax` request easier. However I again ran into another problem with when I tried refactoring my code but put it as an external function to be called only when populating the homepage. The issue i ran into was that it was a blocking function thus it was pushed to the the stack queue. And not populating my array that I needed. I fixed the issue by sticking the function back into the populate home controller function but it costed considerable delay when loading the page.
 
@@ -140,7 +149,8 @@ Using the `unirest` module it made handling an `ajax` request easier. However I 
 
 3.  To only be able to populate the homepage with the current user portfolio I had to do a `.populate` on a reference collection. In my case it was looking for the company that was linked to the user.  
 
-`User.findById(req.user._id)
+```
+User.findById(req.user._id)
 .populate({
   path: 'portfolio'
 })
@@ -153,7 +163,8 @@ Using the `unirest` module it made handling an `ajax` request easier. However I 
     if (err) {
       req.flash('error', 'Portfolio not found')
       res.redirect('/home')
-    }`
+    }
+    ```
 
 By doing populate on my referenced collection I was able to just display the current user companies in his portfolio.
 
